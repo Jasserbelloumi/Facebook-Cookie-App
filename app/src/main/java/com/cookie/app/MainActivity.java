@@ -1,13 +1,13 @@
 package com.cookie.app;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.webkit.CookieManager;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +24,9 @@ public class MainActivity extends Activity {
             CookieManager cookieManager = CookieManager.getInstance();
             cookieManager.setAcceptCookie(true);
             
-            // تقسيم الكوكيز وحقنها
+            // تنظيف الكوكيز القديمة قبل الحقن الجديد
+            cookieManager.removeAllCookies(null);
+            
             String[] cookies = cookieString.split(";");
             for (String cookie : cookies) {
                 cookieManager.setCookie("https://www.facebook.com", cookie);
