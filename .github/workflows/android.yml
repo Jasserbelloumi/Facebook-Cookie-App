@@ -1,17 +1,22 @@
-name: Build
+name: Build Android APK
 on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
-        with: { java-version: '17', distribution: 'temurin' }
-      - name: Force Build
+      - name: set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Build with Gradle
         run: |
+          gradle wrapper --gradle-version 8.2
           chmod +x gradlew
-          ./gradlew :app:assembleDebug --info
-      - uses: actions/upload-artifact@v4
+          ./gradlew :app:assembleDebug --stacktrace
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
         with:
           name: CookieApp
           path: app/build/outputs/apk/debug/*.apk
