@@ -1,0 +1,5 @@
+<resources>
+    <style name="Theme.CookieApp" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#2196F3</item>
+        <item name="colorAccent">#FF4081</item>
+    </resources>
