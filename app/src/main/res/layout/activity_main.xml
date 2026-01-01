@@ -3,23 +3,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="16dp">
 
     <EditText
         android:id="@+id/cookieInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Paste Facebook Cookies Here"
-        android:lines="3" />
+        android:hint="الصق الكوكيز هنا"
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        android:lines="4" />
 
     <Button
         android:id="@+id/btnLoad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login via Cookies" />
+        android:layout_marginTop="10dp"
+        android:text="تسجيل دخول بالكوكيز" />
 
     <WebView
         android:id="@+id/webView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp" />
 </LinearLayout>
