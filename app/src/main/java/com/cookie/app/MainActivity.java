@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnInject;
 
     @Override
-    protected void Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         btnInject = findViewById(R.id.btnInject);
 
         webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setDomStorageEnabled(true);
         webView.setWebViewClient(new WebViewClient());
 
         btnInject.setOnClickListener(v -> {
@@ -42,12 +43,12 @@ public class MainActivity extends AppCompatActivity {
         CookieManager cookieManager = CookieManager.getInstance();
         cookieManager.setAcceptCookie(true);
         
-        // تقسيم الكوكيز وحقنها
         String[] cookies = cookieString.split(";");
         for (String cookie : cookies) {
-            cookieManager.setCookie("https://.facebook.com", cookie);
+            cookieManager.setCookie("https://.facebook.com", cookie.trim());
         }
         
+        cookieManager.flush();
         Toast.makeText(this, "تم الحقن! جاري التحديث...", Toast.LENGTH_SHORT).show();
         webView.reload();
     }
