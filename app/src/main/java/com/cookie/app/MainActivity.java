@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 String cookies = CookieManager.getInstance().getCookie(url);
-                // هنا يتم سحب الكوكيز، يمكنك طباعتها أو حفظها
+                System.out.println("Cookies for " + url + ": " + cookies);
             }
         });
         webView.loadUrl("https://m.facebook.com");
