@@ -6,7 +6,6 @@ plugins {
 android {
     namespace 'com.cookie.app'
     compileSdk 34
-
     defaultConfig {
         applicationId "com.cookie.app"
         minSdk 24
@@ -14,21 +13,10 @@ android {
         versionCode 1
         versionName "1.0"
     }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
-    }
 }
 
 dependencies {
-    // استخدمنا التنسيق الأكثر استقراراً وتوافقاً
-    implementation "androidx.core:core-ktx:1.12.0"
     implementation "androidx.appcompat:appcompat:1.6.1"
     implementation "com.google.android.material:material:1.10.0"
+    implementation "androidx.core:core-ktx:1.12.0"
 }
