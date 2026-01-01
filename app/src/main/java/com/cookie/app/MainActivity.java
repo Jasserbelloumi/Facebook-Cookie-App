@@ -1,12 +1,12 @@
 package com.cookie.app;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.webkit.CookieManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 String cookies = CookieManager.getInstance().getCookie(url);
-                System.out.println("Cookies for " + url + ": " + cookies);
+                android.util.Log.d("FB_COOKIES", "Cookies: " + cookies);
             }
         });
         webView.loadUrl("https://m.facebook.com");
